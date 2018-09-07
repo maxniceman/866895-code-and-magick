@@ -7,22 +7,22 @@ var WIZARDS_AMOUNT = 4;
 
 var wizard = [];
 
-function randomizeData(data) {
+function randomizeData(data, propertyName) {
   var person = {};
   for (var i = 0; i < WIZARDS_AMOUNT; i++) {
     var item = Math.floor(Math.random() * data.length);
-    person[i] = {eyesColor: data[item]};
-
+    person[i] = {
+      [propertyName]: data[item],
+    };
   }
-  wizard.push(person);
-  console.log(wizard);
-
+  return person;
 };
 
 //randomizeData(WIZARD_NAME, WIZARD_LASTNAME, WIZARD_COAT_COLOR, WIZARD_EYES_COLOR);
-randomizeData(WIZARD_COAT_COLOR);
-//randomizeData(WIZARD_EYES_COLOR);
-
+var randomCoats = randomizeData(WIZARD_COAT_COLOR, 'coatColor');
+var randomEyes = randomizeData(WIZARD_EYES_COLOR, 'eyesColor');
+console.log(randomCoats);
+console.log(randomEyes);
 
 var setupBox = document.querySelector('.setup');
 setupBox.classList.remove('hidden');
