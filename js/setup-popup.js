@@ -12,11 +12,13 @@
   var openPopup = function () {
     setup.classList.remove('hidden');
     document.addEventListener('keydown', onPopupEscPress);
+    window.dialog.getDefaultSetupPosition();
   };
 
   var closePopup = function () {
     setup.classList.add('hidden');
     document.removeEventListener('keydown', onPopupEscPress);
+    window.dialog.setDefaultSetupPosition();
   };
 
   setupOpen.addEventListener('click', function () {
