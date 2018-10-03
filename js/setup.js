@@ -20,29 +20,14 @@
   };
 
   // fill template
-  var successHandler = function (wizards) {
+  window.render = function (wizards) {
     var fragment = document.createDocumentFragment();
+    similarListElement.innerHTML = '';
     for (var i = 0; i < WIZARDS_AMOUNT; i++) {
       fragment.appendChild(renderWizard(wizards[i]));
     }
     similarListElement.appendChild(fragment);
   };
-
-  var errorHandler = function (errorMessage) {
-    var node = document.createElement('div');
-    node.style =
-      'z-index: 100; margin: 0 auto; text-align: center;' +
-      'background-color: white; color: red; box-shadow: 0 0 10px rgba(0,0,0,1);' +
-      'padding:25px 0; border-bottom: 4px solid black';
-    node.style.position = 'absolute';
-    node.style.left = 0;
-    node.style.right = 0;
-    node.style.fontSize = '30px';
-    node.textContent = errorMessage;
-    document.body.insertAdjacentElement('afterbegin', node);
-  };
-
-  window.backend.load(successHandler, errorHandler);
 
   var form = setup.querySelector('.setup-wizard-form');
   form.addEventListener('submit', function (evt) {
